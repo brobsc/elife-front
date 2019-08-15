@@ -1,0 +1,12 @@
+<div class="grid center">
+  <input class="input"
+         type="password"
+         placeholder="Insert pin"
+         [(ngModel)]="pin">
+  <div class="control">
+    <button class="button is-text" (click)="login(pin)">
+      Login
+    </button>
+  </div>
+</div>
+

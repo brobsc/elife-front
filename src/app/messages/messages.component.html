@@ -1,0 +1,8 @@
+<div class="messages" *ngIf="messageService.messages">
+  <div class="notification"
+       *ngFor="let message of messageService.messages"
+       [ngClass]="setClasses(message)">
+    <button class="delete" (click)="removeMessage(message)"></button>
+    {{message.text}}
+  </div>
+</div>
