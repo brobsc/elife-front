@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 import { PinAuthService } from '../pin-auth.service';
 
@@ -22,9 +23,12 @@ export class AuthComponent implements OnInit {
   }
 
   login(pin: string) {
-    // TODO: Change to promise once server is done
-    this.pinAuthService.login(this.pin);
-    this.router.navigate(['/']);
+    this.pinAuthService.login(this.pin)
+      .pipe(first())
+      .subscribe((data) => {
+        this.router.navigate(['/']);
+      }, (error) => {
+      });
   }
 
   logout() {

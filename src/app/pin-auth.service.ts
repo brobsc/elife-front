@@ -1,20 +1,37 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 
 import { MessageService } from './message.service';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PinAuthService {
-  PW = '11223344';
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'my-auth-token'
+    })
+  };
 
   login(pin: string) {
-    if (pin === this.PW) {
-      localStorage.setItem('authToken', 'temp-token');
-      this.messageService.add('Logged in', 'success');
-    } else {
-      this.messageService.add('Wrong PIN', 'warning');
-    }
+    return this.http.post<any>(environment.verifyPINUrl, { pin }, this.httpOptions)
+      .pipe(map(res => {
+        if (res && res.token) {
+          localStorage.setItem('authToken', res.token);
+          this.messageService.add(`You're logged in`, 'info');
+
+          return res.token;
+        }
+      }),
+        catchError((err) => {
+          this.messageService.add(err.error.msg, 'warning');
+          return throwError(err);
+        })
+      );
   }
 
   logout() {
@@ -23,9 +40,9 @@ export class PinAuthService {
   }
 
   isLoggedIn() {
-    console.log(localStorage.getItem('authToken'));
     return localStorage.getItem('authToken') !== null;
   }
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+              private http: HttpClient) { }
 }
