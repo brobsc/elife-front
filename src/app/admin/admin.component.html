@@ -1,1 +1,40 @@
-<p>admin works!</p>
+<section class="grid center">
+  <h1>Elife News</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Theme</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Link</th>
+        <th>Image</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let story of stories">
+        <td>{{story.theme}}</td>
+        <td>{{story.title}}</td>
+        <td>{{story.description}}</td>
+        <td>{{story.linkUrl}}</td>
+        <td>{{story.imgUrl}}</td>
+        <td>
+          <button class="button is-white is-small"
+            (click)="editStory(story)">
+            <span class="icon"><i class="fas fa-edit"></i></span>
+          </button>
+        </td>
+        <td>
+          <button class="button is-white is-small"
+            (click)="deleteStory(story)">
+            <span class="icon has-text-danger"><i class="fas fa-trash"></i></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<en-new-story-button></en-new-story-button>
