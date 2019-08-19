@@ -8,5 +8,7 @@
 </section>
 
 <div class="form-modal" *ngIf="showModal">
-  <en-story-form (submitted)="onSubmit($event)"></en-story-form>
+  <en-story-form
+    (submitted)="onSubmit($event)"
+    (canceled)="onCancel($event)"></en-story-form>
 </div>

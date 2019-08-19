@@ -1,0 +1,25 @@
+.admin-table {
+  display: grid;
+  height: 100%;
+  align-content: start;
+  justify-items: center;
+}
+
+table {
+  height: 0;
+  max-width: 720px;
+  font-size: 0.8em;
+}
+
+.form-modal {
+  border-radius: 0.2em;
+  box-shadow: 0.1em 0.1em 1px 1px #0000001f;
+  background: white;
+  border: #ddd 1px solid;
+  min-width: 40%;
+  position: absolute;
+  top: 4em;
+  left: 50%;
+  z-index: 4;
+  padding: 0.4em;
+}

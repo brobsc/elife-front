@@ -1,7 +1,7 @@
-<section class="grid center">
+<section class="admin-table table-container">
   <h1>Elife News</h1>
 
-  <table class="table is-small">
+  <table class="table is-small is-narrow">
     <thead>
       <tr>
         <th>Theme</th>
@@ -18,8 +18,8 @@
         <td>{{story.theme}}</td>
         <td>{{story.title}}</td>
         <td>{{story.description}}</td>
-        <td><a href="{{story.linkUrl}}">{{story.linkUrl}}</a></td>
-        <td><a href="{{story.imgUrl}}">{{story.imgUrl}}</a></td>
+        <td><a [href]="story.linkUrl"><span class="icon"><i class="fas fa-link"></i></span></a></td>
+        <td><a [href]="story.imgUrl"><span class="icon"><i class="fas fa-image"></i></span></a></td>
         <td>
           <button class="button is-white is-small"
             (click)="editStory(story)">
@@ -37,4 +37,9 @@
   </table>
 </section>
 
+<div class="form-modal" *ngIf="showModal">
+  <en-story-form [story]="editingStory"
+    (submitted)="onSubmit($event)"
+    (canceled)="onCancel($event)"></en-story-form>
+</div>
 <en-new-story-button (created)="getStories($event)"></en-new-story-button>

@@ -43,6 +43,20 @@ export class StoryService {
         }));
   }
 
+  updateOne(story: Story) {
+    return this.http.put(`${url}/${story._id}`, story)
+      .pipe(
+        map((res) => {
+          if (res) {
+            this.messageService.add('Updated story', 'success');
+          }
+        }),
+        catchError((err) => {
+          this.messageService.add(`${err.status}: ${err.statusText}`, 'danger');
+          return throwError(err);
+        }));
+  }
+
   constructor(private http: HttpClient,
               private messageService: MessageService) { }
 }

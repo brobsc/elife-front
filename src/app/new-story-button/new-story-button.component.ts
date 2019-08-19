@@ -27,4 +27,8 @@ export class NewStoryButtonComponent implements OnInit {
     this.storyService.createOne(formData)
       .subscribe(() => this.created.emit());
   }
+
+  onCancel(event) {
+    this.showModal = false;
+  }
 }

@@ -11,6 +11,8 @@ import { Story } from '../story';
 })
 export class AdminComponent implements OnInit {
   stories: Story[];
+  editingStory: Story;
+  showModal = false;
 
   constructor(private storyService: StoryService) { }
 
@@ -29,5 +31,22 @@ export class AdminComponent implements OnInit {
   }
 
   editStory(story: Story) {
+    this.editingStory = story;
+    this.showModal = !this.showModal;
+  }
+
+  onSubmit(story) {
+    this.showModal = false;
+    this.storyService.updateOne(story)
+      .subscribe(() => {
+        this.getStories();
+        this.editingStory = null;
+        this.getStories();
+      });
+  }
+
+  onCancel(event) {
+    this.showModal = false;
+    this.editingStory = null;
   }
 }

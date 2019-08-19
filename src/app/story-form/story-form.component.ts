@@ -11,6 +11,7 @@ import { Story } from '../story';
 export class StoryFormComponent implements OnInit {
   @Input() story: Story;
   @Output() submitted: EventEmitter<object>;
+  @Output() canceled: EventEmitter<object>;
   storyForm;
   themes = ['Esportes',
     'Politica',
@@ -20,6 +21,7 @@ export class StoryFormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.submitted = new EventEmitter<object>();
+    this.canceled = new EventEmitter<object>();
   }
 
   ngOnInit() {
@@ -40,5 +42,9 @@ export class StoryFormComponent implements OnInit {
 
   onSubmit(storyData) {
     this.submitted.emit(storyData);
+  }
+
+  onCancel() {
+    this.canceled.emit({});
   }
 }
