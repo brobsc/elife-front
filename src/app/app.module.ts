@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { PinAuthService } from './pin-auth.service';
 import { AdminComponent } from './admin/admin.component';
 import { JwtInterceptor } from './jwt.interceptor';
 import { NewStoryButtonComponent } from './new-story-button/new-story-button.component';
+import { StoryFormComponent } from './story-form/story-form.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +21,14 @@ import { NewStoryButtonComponent } from './new-story-button/new-story-button.com
     MessagesComponent,
     AuthComponent,
     AdminComponent,
-    NewStoryButtonComponent
+    NewStoryButtonComponent,
+    StoryFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [

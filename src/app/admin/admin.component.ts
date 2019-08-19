@@ -19,7 +19,6 @@ export class AdminComponent implements OnInit {
   }
 
   getStories() {
-    console.log('getting stories');
     this.storyService.getAll()
       .subscribe(stories => this.stories = stories);
   }

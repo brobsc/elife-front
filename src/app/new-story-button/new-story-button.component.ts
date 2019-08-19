@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
+import { StoryService } from '../story.service';
 
 @Component({
   selector: 'en-new-story-button',
@@ -6,12 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-story-button.component.scss']
 })
 export class NewStoryButtonComponent implements OnInit {
-  showModal = true;
-  story = {};
+  showModal = false;
+  @Output() created;
 
-  constructor() { }
+  constructor(private storyService: StoryService) {
+    this.created = new EventEmitter<any>();
+  }
 
   ngOnInit() {
   }
 
+  toggleModal() {
+    this.showModal = !this.showModal;
+  }
+
+  onSubmit(formData) {
+    this.showModal = false;
+    this.storyService.createOne(formData)
+      .subscribe(() => this.created.emit());
+  }
 }

@@ -1,0 +1,27 @@
+<section class="en-editor">
+  <form [formGroup]="storyForm"
+    (ngSubmit)="onSubmit(storyForm.value)">
+    <div class="field">
+      <label class="label is-small" for="theme">Theme</label>
+      <input id="theme" type="text" class="input is-small" formControlName="theme">
+    </div>
+    <div class="field">
+      <label class="label is-small" for="title">Title</label>
+      <input id="title" type="text" class="input is-small" formControlName="title">
+    </div>
+    <div class="field">
+      <label class="label is-small" for="description">Description</label>
+      <input id="description" type="text" class="input is-small" formControlName="description">
+    </div>
+    <div class="field">
+      <label class="label is-small" for="imgUrl">Image</label>
+      <input id="imgUrl" type="text" class="input is-small" formControlName="imgUrl">
+    </div>
+    <div class="field">
+      <label class="label is-small" for="linkUrl">Link</label>
+      <input id="linkUrl" type="text" class="input is-small" formControlName="linkUrl">
+    </div>
+
+    <button class="button is-small is-primary" type="submit">Submit</button>
+  </form>
+</section>

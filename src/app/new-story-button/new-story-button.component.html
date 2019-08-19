@@ -1,11 +1,12 @@
 <section class="en-fab">
-  <button class="button is-primary is-large is-rounded">
+  <button class="button is-primary is-large is-rounded"
+    (click)="toggleModal()">
     <span class="icon">
       <i class="fas fa-plus"></i>
     </span>
   </button>
 </section>
 
-<section class="en-editor" *ngIf="showModal">
-
-</section>
+<div class="form-modal" *ngIf="showModal">
+  <en-story-form (submitted)="onSubmit($event)"></en-story-form>
+</div>
