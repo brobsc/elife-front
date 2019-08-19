@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,13 +11,16 @@ import { AuthGuard } from './auth.guard';
 import { MessageService } from './message.service';
 import { PinAuthService } from './pin-auth.service';
 import { AdminComponent } from './admin/admin.component';
+import { JwtInterceptor } from './jwt.interceptor';
+import { NewStoryButtonComponent } from './new-story-button/new-story-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MessagesComponent,
     AuthComponent,
-    AdminComponent
+    AdminComponent,
+    NewStoryButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { AdminComponent } from './admin/admin.component';
     AuthGuard,
     PinAuthService,
     MessageService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

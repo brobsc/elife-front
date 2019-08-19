@@ -6,3 +6,10 @@ html, body {
 .grid {
   display: grid;
 }
+
+.center {
+  align-content: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
