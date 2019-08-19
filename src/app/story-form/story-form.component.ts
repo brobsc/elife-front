@@ -12,6 +12,11 @@ export class StoryFormComponent implements OnInit {
   @Input() story: Story;
   @Output() submitted: EventEmitter<object>;
   storyForm;
+  themes = ['Esportes',
+    'Politica',
+    'Entretenimento',
+    'Famosos',
+  ];
 
   constructor(private formBuilder: FormBuilder) {
     this.submitted = new EventEmitter<object>();
@@ -19,7 +24,7 @@ export class StoryFormComponent implements OnInit {
 
   ngOnInit() {
     let defaultValues = {
-      theme: '',
+      theme: 'Entretenimento',
       title: '',
       description: '',
       imgUrl: '',

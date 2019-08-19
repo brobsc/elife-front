@@ -3,23 +3,27 @@
     (ngSubmit)="onSubmit(storyForm.value)">
     <div class="field">
       <label class="label is-small" for="theme">Theme</label>
-      <input id="theme" type="text" class="input is-small" formControlName="theme">
+      <div class="select is-small">
+        <select id="theme" formControlName="theme" required>
+          <option *ngFor="let t of themes" value="{{t}}">{{t}}</option>
+        </select>
+      </div>
     </div>
     <div class="field">
       <label class="label is-small" for="title">Title</label>
-      <input id="title" type="text" class="input is-small" formControlName="title">
+      <input id="title" type="text" class="input is-small" formControlName="title" required>
     </div>
     <div class="field">
       <label class="label is-small" for="description">Description</label>
-      <input id="description" type="text" class="input is-small" formControlName="description">
+      <input id="description" type="text" class="input is-small" formControlName="description" required>
     </div>
     <div class="field">
-      <label class="label is-small" for="imgUrl">Image</label>
-      <input id="imgUrl" type="text" class="input is-small" formControlName="imgUrl">
+      <label class="label is-small" for="imgUrl">Image (URL)</label>
+      <input id="imgUrl" type="url" class="input is-small" formControlName="imgUrl" required>
     </div>
     <div class="field">
       <label class="label is-small" for="linkUrl">Link</label>
-      <input id="linkUrl" type="text" class="input is-small" formControlName="linkUrl">
+      <input id="linkUrl" type="url" class="input is-small" formControlName="linkUrl" required>
     </div>
 
     <button class="button is-small is-primary" type="submit">Submit</button>

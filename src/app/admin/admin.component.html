@@ -1,7 +1,7 @@
 <section class="grid center">
   <h1>Elife News</h1>
 
-  <table class="table">
+  <table class="table is-small">
     <thead>
       <tr>
         <th>Theme</th>
@@ -18,8 +18,8 @@
         <td>{{story.theme}}</td>
         <td>{{story.title}}</td>
         <td>{{story.description}}</td>
-        <td>{{story.linkUrl}}</td>
-        <td>{{story.imgUrl}}</td>
+        <td><a href="{{story.linkUrl}}">{{story.linkUrl}}</a></td>
+        <td><a href="{{story.imgUrl}}">{{story.imgUrl}}</a></td>
         <td>
           <button class="button is-white is-small"
             (click)="editStory(story)">

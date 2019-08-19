@@ -38,7 +38,7 @@ export class StoryService {
           }
         }),
         catchError((err) => {
-          this.messageService.add(err.error.msg, 'danger');
+          this.messageService.add(`${err.status}: ${err.statusText}`, 'danger');
           return throwError(err);
         }));
   }
